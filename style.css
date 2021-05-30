@@ -1,0 +1,115 @@
+.row {
+    margin: 0;
+}
+
+body{
+    background-image: radial-gradient(rgb(0,0,0),rgb(60,60,60));
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    box-sizing: border-box;
+    font-family: 'Mate SC','Oxygen', sans-serif;
+}
+
+#head{
+    color: black;
+    background-color: white;
+    font-family: 'Squada One', cursive;
+}
+
+#head h1{
+    padding: 3%;
+    font-size: 60px;
+}
+
+#input{
+    background-color: lightskyblue;
+    color: black;
+    width: 18%;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+#inputtable {
+    text-align: center;
+    /* width: 80vw; */
+}
+
+#submit{
+    margin-top: 1%;
+    size: 20px;
+    border-radius: 10%;
+}
+
+#submit:hover{
+    background-color: lightblue;
+}
+
+#aligning{
+    text-align: center;
+    margin: 1%;
+    padding: 1%;
+}
+
+#aligning label{
+    margin-right: 10px;
+}
+
+#inputtable{
+    width: 80%;
+    margin: auto;
+    margin-top: 5%;
+}
+
+table, tr{
+    border: 2px solid white;
+    text-align: center;
+    width: 80%;
+}
+
+#info label, #submitAB{
+    margin-left: 80px;
+    margin-top: 20px;
+    margin-right: 15px;
+    border-radius: 10px;
+}
+
+#submitAB:hover{
+    background-color: lightblue;
+}
+
+#table td, #table th{
+    border: 2px solid white;
+}
+
+#totalavg{
+    background-color: white;
+    color: black;
+}
+
+#totalavg div{
+    margin-left: 80px;
+    margin-top: 20px;
+    margin-right: 15px;
+    font-size: 28px;
+}
+
+#gantt span{
+    background-color: burlywood;
+    
+}
+
+.gChart{
+    /* width: 50px; */
+    display: inline-block;
+    padding:10px;
+    width: 50px;
+    outline: 1px solid black;
+}
+
+.gChartValues{
+    padding: 0;
+    width: 50px;
+    margin-top: 50px;
+    outline: none;
+}

@@ -87,10 +87,10 @@ let avgTAT = 0;
 var colors = ["orange", "yellow", "lightpurple", "pink", "green", "lightblue"];
 document.querySelector("#submit").addEventListener("click", function () {
     inputNumber = Number(document.querySelector("#input").value);
-    if (inputNumber > 6) alert("Number should be greater than 0 and less than 7");
+    if (inputNumber > 6 || inputNumber < 1) alert("Number should be greater than 0 and less than 7");
     else {
         for (var i = 0; i < inputNumber; i++) {
-            document.querySelector("#info").innerHTML += '<div><label>P' + (i + 1) + '</label><input type="number" id="A' + i + '" placeholder="Arrival' + (i + 1) + '"><input type="number" id="B' + (i) + '" placeholder="Burst' + (i + 1) + '"></div>';
+            document.querySelector("#info").innerHTML += '<div><label>P' + (i + 1) + '</label><input type="number" class="centered" id="A' + i + '" placeholder="Arrival' + (i + 1) + '"><input type="number" class="centered" id="B' + (i) + '" placeholder="Burst' + (i + 1) + '"></div>';
         }
         document.querySelector("#info").innerHTML += '<button type="submit" id="submitAB">Submit</button>';
         document.querySelector("#submitAB").addEventListener("click",display);

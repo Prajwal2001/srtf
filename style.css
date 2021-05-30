@@ -32,6 +32,10 @@ body{
     width: 18%;
     font-weight: bold;
     border-radius: 10px;
+    text-align: center;
+}
+.centered {
+    text-align: center;
 }
 hr {
     /* height: 5px; */

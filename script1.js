@@ -28,15 +28,15 @@ function strf(){
         t++;
         if(b.length > 0){
             // console.log("|P"+b[0].pid);
-            document.querySelector("#gantt").innerHTML += `<span class="gChart" style = "background-color:${colors[b[0].pid-1]}; color:black; box-shadow: 0 0 5px white;">p${b[0].pid}</span>`;
-            document.querySelector("#gantvalues").innerHTML += `<span class="gChart gChartValues">${gantValues++}</span>`;
+            document.querySelector("#gantt").innerHTML += `<span class="gChart" style = "background-color:${colors[b[0].pid-1]}; color:black; box-shadow: 0 0 5px white; position: relative; animation: mymove${b[0].pid % 2}to${b[0].pid % 2} 3s 1;">p${b[0].pid}</span>`;
+            document.querySelector("#gantvalues").innerHTML += `<span class="gChart gChartValues" style="position: relative; animation: mymove${b[0].pid % 2}to${b[0].pid % 2} 3s 1;">${gantValues++}</span>`;
             b[0].rt -= 1;
             if(b[0].rt==0){
                 b[0].ct=t;
                 b.shift();
             }
         }
-    } document.querySelector("#gantvalues").innerHTML += `<span class="gChart gChartValues">${gantValues}</span>`; 
+    } document.querySelector("#gantvalues").innerHTML += `<span class="gChart gChartValues" style="position: relative; animation: mymove1to1 3s 1;">${gantValues}</span>`; 
 }
 
 // let n=3;
@@ -58,10 +58,10 @@ let avgTAT = 0;
 var colors = ["orange", "yellow", "lightpurple", "pink", "green", "lightblue"];
 document.querySelector("#submit").addEventListener("click", function () {
     inputNumber = Number(document.querySelector("#input").value);
-    if (inputNumber > 6) alert("Number should be greater than 0 and less than 7");
+    if (inputNumber > 6 || inputNumber < 1) alert("Number should be greater than 0 and less than 7");
     else {
         for (var i = 0; i < inputNumber; i++) {
-            document.querySelector("#info").innerHTML += '<div><label>P' + (i + 1) + '</label><input type="number" id="A' + i + '" placeholder="Arrival' + (i + 1) + '"><input type="number" id="B' + (i) + '" placeholder="Burst' + (i + 1) + '"></div>';
+            document.querySelector("#info").innerHTML += '<div><label>P' + (i + 1) + '</label><input type="number" id="A' + i + '" class="arriveinput" placeholder="Arrival' + (i + 1) + '"><input type="number" id="B' + (i) + '" class="burstinput" placeholder="Burst' + (i + 1) + '"></div>';
         }
         document.querySelector("#info").innerHTML += '<button type="submit" id="submitAB">Submit</button>';
         document.querySelector("#submitAB").addEventListener("click",display);
@@ -73,7 +73,8 @@ function display(){
     // <div class="col"><b>Arrival time</b></div>
     // <div class="col"><b>Burst time</b></div>
     // </div>`;
-    console.log(arrivalTime, burstTime);
+    // console.log(arrivalTime, burstTime);
+    document.querySelector("p").innerHTML = `GANTT CHART`;
     document.querySelector("#inputtable").innerHTML += `<table id = "table"><thead>
     <tr>
         <th>Process</th>

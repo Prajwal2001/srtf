@@ -8,12 +8,6 @@ class node{
     }
 }
 let a=[], b=[];
-// function insert(){
-//     for(i=0;i<n;i++){
-//         a.push(new node(i+1, i+2, Math.floor((Math.random() * 4) + 1)));
-//     }
-// }
-
 function strf(){
     let tt=0, t=0, gantValues = 0 ;
     for(i=0; i<a.length; i++)
@@ -28,15 +22,50 @@ function strf(){
         t++;
         if(b.length > 0){
             // console.log("|P"+b[0].pid);
-            document.querySelector("#gantt").innerHTML += `<span class="gChart" style = "background-color:${colors[b[0].pid-1]}; color:black; box-shadow: 0 0 5px white; position: relative; animation: mymove${b[0].pid % 2}to${b[0].pid % 2} 3s 1;">p${b[0].pid}</span>`;
-            document.querySelector("#gantvalues").innerHTML += `<span class="gChart gChartValues" style="position: relative; animation: mymove${b[0].pid % 2}to${b[0].pid % 2} 3s 1;">${gantValues++}</span>`;
+            document.querySelector("#gantt").innerHTML += `<span class="gChart onhover" style = "background-color:${colors[b[0].pid-1]}; color:black; box-shadow: 0 0 5px white;">p${b[0].pid}</span>`;
+            document.querySelector("#gantvalues").innerHTML += `<span class="gChart gChartValues">${gantValues++}</span>`;
             b[0].rt -= 1;
             if(b[0].rt==0){
                 b[0].ct=t;
                 b.shift();
             }
         }
-    } document.querySelector("#gantvalues").innerHTML += `<span class="gChart gChartValues" style="position: relative; animation: mymove1to1 3s 1;">${gantValues}</span>`; 
+    } 
+
+
+
+    // let id;
+    // id = setInterval(function()
+    // {
+    //     let tt=0, t=0, gantValues = 0 ;
+    //     if(t == tt)
+    //         clearInterval(id);
+    //     else
+    //     {
+    //         for(i=0; i<a.length; i++)
+    //             tt += a[i].bt;
+    //         for(i=0; i<a.length; i++){
+    //             if(t==a[i].at){
+    //                 b.push(a[i]);
+    //                 console.log(b);
+    //                 b.sort(function(x, y){return x.rt-y.rt});
+    //             }
+    //         }
+    //         t++;
+    //         if(b.length > 0){
+    //             // console.log("|P"+b[0].pid);
+    //             document.querySelector("#gantt").innerHTML += `<span class="gChart onhover" style = "background-color:${colors[b[0].pid-1]}; color:black; box-shadow: 0 0 5px white;">p${b[0].pid}</span>`;
+    //             document.querySelector("#gantvalues").innerHTML += `<span class="gChart gChartValues">${gantValues++}</span>`;
+    //             b[0].rt -= 1;
+    //             if(b[0].rt==0){
+    //                 b[0].ct=t;
+    //                 b.shift();
+    //             }
+    //             // console.log(b);
+    //         }
+    //     }
+    // }, 1000)
+    document.querySelector("#gantvalues").innerHTML += `<span class="gChart gChartValues">${gantValues}</span>`; 
 }
 
 // let n=3;
@@ -58,23 +87,23 @@ let avgTAT = 0;
 var colors = ["orange", "yellow", "lightpurple", "pink", "green", "lightblue"];
 document.querySelector("#submit").addEventListener("click", function () {
     inputNumber = Number(document.querySelector("#input").value);
-    if (inputNumber > 6 || inputNumber < 1) alert("Number should be greater than 0 and less than 7");
+    if (inputNumber > 6) alert("Number should be greater than 0 and less than 7");
     else {
         for (var i = 0; i < inputNumber; i++) {
-            document.querySelector("#info").innerHTML += '<div><label>P' + (i + 1) + '</label><input type="number" id="A' + i + '" class="arriveinput" placeholder="Arrival' + (i + 1) + '"><input type="number" id="B' + (i) + '" class="burstinput" placeholder="Burst' + (i + 1) + '"></div>';
+            document.querySelector("#info").innerHTML += '<div><label>P' + (i + 1) + '</label><input type="number" id="A' + i + '" placeholder="Arrival' + (i + 1) + '"><input type="number" id="B' + (i) + '" placeholder="Burst' + (i + 1) + '"></div>';
         }
         document.querySelector("#info").innerHTML += '<button type="submit" id="submitAB">Submit</button>';
         document.querySelector("#submitAB").addEventListener("click",display);
     }
 });
 function display(){
+    document.querySelector("h4").innerHTML += "<hr>GANTT CHART";
     // document.querySelector("#inputtable").innerHTML += `<div class="row">
     // <div class="col"><b>Process</b></div>
     // <div class="col"><b>Arrival time</b></div>
     // <div class="col"><b>Burst time</b></div>
     // </div>`;
     // console.log(arrivalTime, burstTime);
-    document.querySelector("p").innerHTML = `GANTT CHART`;
     document.querySelector("#inputtable").innerHTML += `<table id = "table"><thead>
     <tr>
         <th>Process</th>
@@ -107,5 +136,6 @@ function display(){
     }
     avgWaitingTime /= inputNumber;
     avgTAT /= inputNumber;
+    document.querySelector("#totalavg").style.paddingBottom = "50px";
     document.querySelector("#totalavg").innerHTML += `<div>Average waiting time is: ${avgWaitingTime.toPrecision(3)}</div><div>Average turn around time is: ${avgTAT.toPrecision(3)}</div>`;
 }

@@ -1,25 +1,6 @@
-@keyframes mymove1to0 {
-    0% {top: -200px; left: -1200px;}
-    /* 75% {top: 100px;} */
-    100% {top: 0; left: 0;}
-}
-@keyframes mymove1to1 {
-    0% {top: -200px; left: -1200px;}
-    /* 75% {top: 100px;} */
-    100% {top: 0; left: 0;}
-}
-@keyframes mymove0to1 {
-    0% {top: -200px; left: 900px;}
-    /* 75% {left: -200px;} */
-    100% {top: 0; left: 0;}
-}
-@keyframes mymove0to0 {
-    0% {top: -200px; left: 900px;}
-    /* 75% {left: -200px;} */
-    100% {top: 0; left: 0;}
-}
-*:hover {
-    cursor: pointer;
+@keyframes ganttspan {
+    from {opacity: 0;}
+    to {opacity: 100%;}
 }
 .row {
     margin: 0;
@@ -43,8 +24,6 @@ body{
 #head h1{
     padding: 3%;
     font-size: 60px;
-    position: relative;
-    animation: mymove0to0 3s 1;
 }
 
 #input{
@@ -53,18 +32,22 @@ body{
     width: 18%;
     font-weight: bold;
     border-radius: 10px;
+}
+hr {
+    /* height: 5px; */
+    width: 80%;
+    margin: 20px auto;
+    border: 1px solid gray;
+    opacity: 0.8;
+}
+h4 {
     text-align: center;
+    font-size: 40px;
 }
 
 #inputtable {
     text-align: center;
-    position: relative;
-    animation: mymove0to1 3s 1;
     /* width: 80vw; */
-}
-td:hover, th:hover {
-    color: black;
-    background-color: white;
 }
 
 #submit{
@@ -81,14 +64,11 @@ td:hover, th:hover {
     text-align: center;
     margin: 1%;
     padding: 1%;
-    position: relative;
-    animation: mymove1to1 3s 1;
 }
-#gantttext {
-    text-align: center;
-    position: relative;
-    animation: mymove1to0 3s 1;
+#ganttvalues {
+    animation: ganttspan 2s 5s;
 }
+
 #aligning label{
     margin-right: 10px;
 }
@@ -103,11 +83,6 @@ table, tr{
     border: 2px solid white;
     text-align: center;
     width: 80%;
-    position: relative;
-    animation: mymove0to0 3s 1;
-}
-tr {
-    animation: mymove1to1 3s 1;
 }
 
 #info label, #submitAB{
@@ -115,14 +90,8 @@ tr {
     margin-top: 20px;
     margin-right: 15px;
     border-radius: 10px;
-    position: relative;
-    animation: mymove0to1 2s 1;
 }
-.arriveinput, .burstinput{
-    position: relative;
-    animation: mymove0to1 2s 1;
-    text-align: center;
-}
+
 #submitAB:hover{
     background-color: lightblue;
 }
@@ -130,6 +99,7 @@ tr {
 #table td, #table th{
     border: 2px solid white;
 }
+
 #totalavg{
     background-color: white;
     color: black;
@@ -146,7 +116,15 @@ tr {
     background-color: burlywood;
     
 }
-
+.onhover {
+    transition: width 0.5s;
+    animation: ganttspan 5s;
+}
+.onhover:hover {
+    /* padding: 13px; */
+    width: 60px;
+    /* animation: gantt 2s; */
+}
 .gChart{
     /* width: 50px; */
     display: inline-block;
@@ -154,12 +132,16 @@ tr {
     width: 50px;
     outline: 1px solid black;
 }
-.gChart:hover {
-    box-shadow: none;
-}
+
 .gChartValues{
     padding: 0;
     width: 50px;
-    margin-top: 10px;
+    margin-top: 20px;
     outline: none;
+    animation: ganttspan 5s;
+}
+#table td:hover, th:hover {
+    cursor: pointer;
+    color: black;
+    background-color: white;
 }
